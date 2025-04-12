@@ -8,7 +8,7 @@ st.set_page_config(page_title="NextRise - Property Investment Dashboard", layout
 st.image("logo.png", width=400)
 #st.title("🏡 NextRise: Property Investment Dashboard")
 
-st.sidebar.header("🔍 Filter Suburb Data")
+st.sidebar.header(" Filter Suburb Data")
 
 area_options = df['Area'].unique()
 selected_areas = st.sidebar.multiselect("Select Area(s)", area_options, default=area_options[:5])
