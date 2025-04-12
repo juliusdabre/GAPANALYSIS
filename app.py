@@ -1,4 +1,3 @@
-
 import streamlit as st
 import pandas as pd
 import plotly.express as px
@@ -6,8 +5,8 @@ import plotly.graph_objects as go
 
 df = pd.read_excel("GGI Jan 2025.xlsx")
 st.set_page_config(page_title="NextRise - Property Investment Dashboard", layout="wide")
-st.image("logo.png", width=500)
-#st.title("NextRise")
+st.image("logo.png", width=400)
+#st.title("🏡 NextRise: Property Investment Dashboard")
 
 st.sidebar.header("🔍 Filter Suburb Data")
 
@@ -63,7 +62,7 @@ rank_range = st.sidebar.slider("Rank",
 )
 
 filtered_df = df[
-    #(df['Area'].isin(selected_areas)) &
+    (df['Area'].isin(selected_areas)) &
     (df['Av Annual Growth (10Y)'].between(*growth_range)) &
     (df['Population Growth PA'].between(*pop_growth_range)) &
     (df['6Y Growth Rate from 2014'].between(*growth_6y_range)) &
@@ -96,6 +95,21 @@ st.plotly_chart(radar_fig, use_container_width=True)
 
 st.subheader("🧠 AI Investment Summary")
 for _, row in filtered_df.iterrows():
-    st.markdown(f"**{row['Area']}** | Growth: {row['Av Annual Growth (10Y)']:.2%}, Pop: {row['Population Growth PA']:.2%}, Gap: ${row['Growth gap ($)']:.0f}, Rank: {row['Rank']}")
+    st.markdown(f'''
+### 📍 {row['Area']}
+- 📈 **10Y Avg Annual Growth:** {row['Av Annual Growth (10Y)']:.2%}
+- 👥 **Population Growth PA:** {row['Population Growth PA']:.2%}
+- 📊 **6Y Growth from 2014:** {row['6Y Growth Rate from 2014']:.2%}
+- 📉 **CMGR 2014–2020:** {row['CMGR 2014 to 2020']:.4f}
+- 🔮 **Projected CMGR Today:** {row['Projected CMGR Today']:.0f}
+- 💵 **Growth Gap ($):** ${row['Growth gap ($)']:.0f}
+- 📉 **Growth Gap (%):** {row['Growth gap (%)']:.2%}
+- 🏅 **Rank:** {row['Rank']}
+
+This suburb shows strong fundamentals with a {row['Av Annual Growth (10Y)']:.2%} annual price increase over a decade,
+coupled with population growth of {row['Population Growth PA']:.2%} per annum.
+The growth gap of ${row['Growth gap ($)']:.0f} indicates an investment opportunity due to undervaluation.
+Its historical performance and projected growth make **{row['Area']}** a strong candidate for strategic investment.
+''')
 
 st.download_button("📥 Download Filtered Data", data=filtered_df.to_csv(index=False), file_name="filtered_ggi_data.csv")
