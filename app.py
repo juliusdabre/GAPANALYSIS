@@ -7,7 +7,7 @@ import plotly.graph_objects as go
 df = pd.read_excel("GGI Jan 2025.xlsx")
 st.set_page_config(page_title="NextRise - Property Investment Dashboard", layout="wide")
 st.image("logo.png", width=500)
-st.title("NextRise")
+#st.title("NextRise")
 
 st.sidebar.header("🔍 Filter Suburb Data")
 
@@ -63,7 +63,7 @@ rank_range = st.sidebar.slider("Rank",
 )
 
 filtered_df = df[
-    (df['Area'].isin(selected_areas)) &
+    #(df['Area'].isin(selected_areas)) &
     (df['Av Annual Growth (10Y)'].between(*growth_range)) &
     (df['Population Growth PA'].between(*pop_growth_range)) &
     (df['6Y Growth Rate from 2014'].between(*growth_6y_range)) &
