@@ -7,7 +7,7 @@ import plotly.graph_objects as go
 df = pd.read_excel("GGI Jan 2025.xlsx")
 st.set_page_config(page_title="NextRise - Property Investment Dashboard", layout="wide")
 st.image("logo.png", width=200)
-st.title(NextRise)
+st.title("NextRise")
 
 st.sidebar.header("🔍 Filter Suburb Data")
 
