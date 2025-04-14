@@ -102,7 +102,7 @@ for _, row in filtered_df.iterrows():
 - 📊 **6Y Growth from 2014:** {row['6Y Growth Rate from 2014']:.2%}
 - 📉 **CMGR 2014–2020:** {row['CMGR 2014 to 2020']:.4f}
 - 🔮 **Projected CMGR Today:** {row['Projected CMGR Today']:.0f}
-- 💵   Growth Gap ($): ${row['Growth gap ($)']:.0f}
+- 💵 ** Growth Gap $: ${row['Growth gap ($)']:.0f}
 - 📉 **Growth Gap (%):** {row['Growth gap (%)']:.2%}
 - 🏅 **Rank:** {row['Rank']}
 
